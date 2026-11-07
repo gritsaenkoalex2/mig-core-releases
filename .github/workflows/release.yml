@@ -1,0 +1,63 @@
+name: Package verified MIG Core
+on:
+  push:
+    branches: [main]
+    paths: [release.json, 'payload/**', 'test/**', package.json, '.github/workflows/release.yml']
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify packaged application and official Electron runtime
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $r=Get-Content release.json -Raw | ConvertFrom-Json
+          $app="payload/$($r.version)/app.asar"
+          if ((Get-FileHash $app -Algorithm SHA256).Hash.ToLower() -ne $r.appAsarSha256) { throw 'Application checksum mismatch' }
+          $name="electron-v$($r.electron)-win32-x64.zip"
+          $base="https://github.com/electron/electron/releases/download/v$($r.electron)"
+          Invoke-WebRequest "$base/SHASUMS256.txt" -OutFile "$env:RUNNER_TEMP/checksums.txt"
+          Invoke-WebRequest "$base/$name" -OutFile "$env:RUNNER_TEMP/electron.zip"
+          $line=Get-Content "$env:RUNNER_TEMP/checksums.txt" | Where-Object { $_ -match "\s+$([regex]::Escape($name))$" }
+          if (-not $line) { throw 'Official checksum missing' }
+          $expected=($line -split '\s+')[0]
+          if ((Get-FileHash "$env:RUNNER_TEMP/electron.zip" -Algorithm SHA256).Hash.ToLower() -ne $expected) { throw 'Electron checksum mismatch' }
+          Expand-Archive "$env:RUNNER_TEMP/electron.zip" stage
+          Rename-Item stage/electron.exe 'MIG Core.exe'
+          Copy-Item $app stage/resources/app.asar
+          Remove-Item stage/resources/default_app.asar -ErrorAction SilentlyContinue
+      - name: Build installer from verified packaged application
+        shell: pwsh
+        run: |
+          npm install --ignore-scripts --no-audit --no-fund
+          npx electron-builder --prepackaged stage --win nsis --x64 --publish never
+      - name: Install and test real Windows application without paid model calls
+        shell: pwsh
+        run: ./test/windows-smoke.ps1
+      - name: Record checksums
+        shell: pwsh
+        run: |
+          $exe=Get-ChildItem dist/MIG-Core-Setup-*-x64.exe | Select-Object -First 1
+          $hash=(Get-FileHash $exe.FullName -Algorithm SHA256).Hash.ToLower()
+          "$hash  $($exe.Name)" | Set-Content dist/SHA256SUMS.txt
+          $r=Get-Content release.json -Raw | ConvertFrom-Json
+          @{version=$r.version;source=$r.source;appAsarSha256=$r.appAsarSha256;sha256=$hash;size=$exe.Length;file=$exe.Name} | ConvertTo-Json | Set-Content dist/release-proof.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mig-core-public-release-proof
+          path: dist/*
+          retention-days: 30
+      - name: Publish verified installer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: pwsh
+        run: |
+          $r=Get-Content release.json -Raw | ConvertFrom-Json
+          gh release create "v$($r.version)" dist/MIG-Core-Setup-*-x64.exe dist/SHA256SUMS.txt dist/windows-smoke.json dist/mock-chat-proof.json dist/release-proof.json --title "МИГ — ядро $($r.version)" --notes-file NOTES.md --target $env:GITHUB_SHA

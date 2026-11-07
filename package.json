@@ -1,0 +1,50 @@
+{
+  "name": "mig-desktop-core",
+  "version": "0.2.0",
+  "description": "Локальное интеллектуальное ядро МИГа",
+  "author": "MIG",
+  "private": true,
+  "main": "src/main.cjs",
+  "devDependencies": {
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "com.gritsaenkoalex2.mig.core",
+    "productName": "MIG Core",
+    "artifactName": "MIG-Core-Setup-${version}-${arch}.${ext}",
+    "asar": true,
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "МИГ — ядро",
+      "installerLanguages": [
+        "ru_RU"
+      ],
+      "deleteAppDataOnUninstall": false,
+      "runAfterFinish": false
+    },
+    "electronVersion": "45.2.3"
+  }
+}
