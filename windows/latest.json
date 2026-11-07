@@ -1,0 +1,4 @@
+{
+  "payload": "{\"version\":\"0.2.0\",\"platform\":\"win32\",\"arch\":\"x64\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.0/MIG-Core-Setup-0.2.0-x64.exe\",\"size\":121211728,\"sha256\":\"34946593c4f07860ba77b4314279141613ac294eb63aaa8b8a4a22fb813ac1d5\",\"notes\":\"Просмотр инструкций и контекста; защищённое подключение Android МИГа только для чтения; обновления «Обновить / Позже». Для телефона требуется отдельная Android-сборка.\"}",
+  "signature": "nOyNHF4Xgoe+3Q8TPSNWPimhIIjHbGK6VECOnqCb5XDBh7F6VHfkWd37S4sF8ts/KklynpFxuX5wlsUNU6SOAQ=="
+}
