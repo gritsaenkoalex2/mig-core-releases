@@ -1,8 +1,8 @@
 # МИГ — настольное ядро
 
-Публичные установщики Windows и подписанный канал обновлений. Текущая версия: **0.2.0**, Windows x64.
+Публичные установщики Windows и подписанный канал обновлений. Текущая версия: **0.2.1**, Windows x64.
 
-[Скачать установщик 0.2.0](https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.0/MIG-Core-Setup-0.2.0-x64.exe) · [Проверки и контрольные суммы](https://github.com/gritsaenkoalex2/mig-core-releases/releases/tag/v0.2.0)
+[Скачать установщик 0.2.1](https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.1/MIG-Core-Setup-0.2.1-x64.exe) · [Проверки и контрольные суммы](https://github.com/gritsaenkoalex2/mig-core-releases/releases/tag/v0.2.1)
 
 ## Переход с 0.1
 
