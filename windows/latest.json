@@ -1,4 +1,4 @@
 {
-  "payload": "{\"version\":\"0.2.1\",\"platform\":\"win32\",\"arch\":\"x64\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.1/MIG-Core-Setup-0.2.1-x64.exe\",\"size\":121211752,\"sha256\":\"6a08e38cf7cba4a70d90d0eeab9baecd61abd79acc87876635a1411b3ad46853\",\"notes\":\"Исправлена отмена запроса с телефона: ядро прерывает вычисление и освобождает модель. Сохраняются инструкции, защищённый режим чтения и обновления по согласию.\"}",
-  "signature": "FO0AveDxjZ+ip/Gi6F1B2fgmRno+cwZT5RTee0/Cxv+8zHBK79MmM4CNzOX4emEH3t5Kg8AveQFKoL+ZNiu3Bg=="
+  "payload": "{\"version\":\"0.2.4\",\"platform\":\"win32\",\"arch\":\"x64\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.4/MIG-Core-Setup-0.2.4-x64.exe\",\"size\":121217458,\"sha256\":\"7b953614c0ae97af20a6f89249f6434bbd92b6097580b2e1c9aad62ce98a3756\",\"notes\":\"Ответы через локальную модель вместо шаблонов; резюме длинной беседы и понятное продолжение при лимите ответа. Сохранён режим только чтения.\"}",
+  "signature": "RwaQq2fcHVqayRH40p3yCHH956mc5YGkUDeundCGBJ61atDMhCNG0SbeS0/wWmJHTBWyLrb1Qyv68e1p5+bUAQ=="
 }
