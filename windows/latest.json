@@ -1,4 +1,4 @@
 {
-  "payload": "{\"version\":\"0.2.5\",\"platform\":\"win32\",\"arch\":\"x64\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.5/MIG-Core-Setup-0.2.5-x64.exe\",\"size\":121221589,\"sha256\":\"0b0600b4c75f2b1c6244b5ba7aebb0ac297be8ec28374b3a69888574f5f5f729\",\"appSha256\":\"d488c5fb5d2f79707474e83d3828f0c5ce6b1e67f2cdb62af6fd95eb5abb28b3\",\"notes\":\"Память беседы, редактирование инструкции общения, корректная версия в интерфейсе и проверяемая установка обновлений. После перезапуска включи подключение МИГа в разделе «Приложения».\"}",
-  "signature": "o5cQKNEfSjak0dAXPRYulILwpsy9t+8LGMFdDktKuJLlBz4HkeJRXjvvB6ROhDlF7VF2tjULDC7YphgspePDBg=="
+  "payload": "{\"version\":\"0.2.6\",\"platform\":\"win32\",\"arch\":\"x64\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.6/MIG-Core-Setup-0.2.6-x64.exe\",\"size\":121225948,\"sha256\":\"ebb8721f3aaf8dcb18de68fd1ad16ef80afc1c1df1a98394a9c29d6a49808d1f\",\"appSha256\":\"88e14589ce6e8ce56a1b8720d9d14663244c22b3246d082639e43fd8fd287a76\",\"notes\":\"Сведения обо мне и настройки общения из МИГа, исправления календарных периодов и памяти, вычисление времени и сумм, более длительная загрузка обновлений.\"}",
+  "signature": "+m5HTE7DH/xf+lKIES9l1pFfDii4c5cNTwj47JAA3We/3QDc8ux8rT+N3LLnJgqN6ZlDglPupFl0MgbVCHWqAw=="
 }
