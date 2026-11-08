@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $installer = (Get-ChildItem 'dist/MIG-Core-Setup-*-x64.exe' | Select-Object -First 1).FullName
 if (-not $installer) { throw 'Installer missing' }
-$installDir = Join-Path $env:RUNNER_TEMP 'mig-core-installed'
+$installDir = Join-Path $env:RUNNER_TEMP 'mig core installed'
 $report = Join-Path $env:RUNNER_TEMP 'mig-core-smoke.json'
 $env:MIG_SMOKE_USER_DATA = Join-Path $env:RUNNER_TEMP 'mig-core-test-data'
 $env:MIG_SMOKE_ENDPOINT = 'http://127.0.0.1:17777'
@@ -22,6 +22,28 @@ try {
   if ($model.chats -lt 1) { throw 'No actual HTTP chat from installed application' }
   Copy-Item $report 'dist/windows-smoke.json'
   Copy-Item $env:MIG_MOCK_REPORT 'dist/mock-chat-proof.json'
+  # Exercise the exact packaged detached bootstrap, including parent-exit handshake.
+  $bootstrapDir = Join-Path $env:RUNNER_TEMP 'mig update bootstrap'
+  New-Item -ItemType Directory -Force -Path $bootstrapDir | Out-Null
+  $script = Join-Path $bootstrapDir 'install-update.ps1'
+  Copy-Item 'src/install-update.ps1' $script
+  $journal = Join-Path $bootstrapDir 'journal.json'
+  $go = Join-Path $bootstrapDir 'go'
+  $config = Join-Path $bootstrapDir 'config.json'
+  $parent = Start-Process powershell.exe -ArgumentList '-NoProfile -Command "Start-Sleep -Seconds 120"' -PassThru
+  @{parent=$parent.Id;installer=$installer;hash=(Get-FileHash $installer -Algorithm SHA256).Hash.ToLower();appHash=(Get-FileHash (Join-Path $installDir 'resources/app.asar') -Algorithm SHA256).Hash.ToLower();version=$result.version;exe=$exe;directory=$installDir;journal=$journal;go=$go;error=(Join-Path $bootstrapDir 'error.txt')} | ConvertTo-Json | Set-Content $config -Encoding UTF8
+  $bootstrap = Start-Process powershell.exe -ArgumentList "-NoProfile -NonInteractive -ExecutionPolicy Bypass -File `"$script`" -Config `"$config`"" -PassThru
+  for($i=0;$i -lt 150 -and -not (Test-Path $journal);$i++){Start-Sleep -Milliseconds 200}
+  $ready = Get-Content $journal -Raw | ConvertFrom-Json
+  if($ready.stage -ne 'ready' -or $parent.HasExited){Write-Host ($ready | ConvertTo-Json);Write-Host ('parentExited='+$parent.HasExited);if(Test-Path (Join-Path $bootstrapDir 'error.txt')){Get-Content (Join-Path $bootstrapDir 'error.txt')};throw 'Bootstrap handshake failed'}
+  'authorized' | Set-Content $go
+  Stop-Process -Id $parent.Id -Force
+  if(-not $bootstrap.WaitForExit(300000)){throw 'Bootstrap did not finish'}
+  $installed = Get-Content $journal -Raw | ConvertFrom-Json
+  if($bootstrap.ExitCode -ne 0 -or $installed.stage -ne 'restarted'){throw ('Bootstrap installation failed: '+($installed | ConvertTo-Json))}
+  Start-Sleep -Seconds 3
+  Get-Process | Where-Object { try { $_.Path -eq $exe } catch { $false } } | Stop-Process -Force
+  Copy-Item $journal 'dist/bootstrap-proof.json'
   $uninstaller = Join-Path $installDir 'Uninstall MIG Core.exe'
   if (-not (Test-Path $uninstaller)) { throw 'Uninstaller missing' }
   $remove = Start-Process $uninstaller -ArgumentList '/S' -PassThru
@@ -30,3 +52,4 @@ try {
   for ($i=0; $i -lt 40 -and (Test-Path $exe); $i++) { Start-Sleep -Milliseconds 250 }
   if (Test-Path $exe) { throw 'Application still present after uninstall' }
 } finally { if (-not $mock.HasExited) { Stop-Process -Id $mock.Id -Force } }
+

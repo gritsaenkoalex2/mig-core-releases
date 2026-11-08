@@ -60,5 +60,5 @@ jobs:
         shell: pwsh
         run: |
           $r=Get-Content release.json -Raw | ConvertFrom-Json
-          gh release create "v$($r.version)" dist/MIG-Core-Setup-*-x64.exe dist/SHA256SUMS.txt dist/windows-smoke.json dist/mock-chat-proof.json dist/release-proof.json --title "МИГ — ядро $($r.version)" --notes-file NOTES.md --target $env:GITHUB_SHA
+          gh release create "v$($r.version)" dist/MIG-Core-Setup-*-x64.exe dist/SHA256SUMS.txt dist/windows-smoke.json dist/mock-chat-proof.json dist/bootstrap-proof.json dist/release-proof.json --title "МИГ — ядро $($r.version)" --notes-file NOTES.md --target $env:GITHUB_SHA
 
