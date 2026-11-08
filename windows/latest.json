@@ -1,4 +1,4 @@
 {
-  "payload": "{\"version\":\"0.2.4\",\"platform\":\"win32\",\"arch\":\"x64\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.4/MIG-Core-Setup-0.2.4-x64.exe\",\"size\":121217458,\"sha256\":\"7b953614c0ae97af20a6f89249f6434bbd92b6097580b2e1c9aad62ce98a3756\",\"notes\":\"Ответы через локальную модель вместо шаблонов; резюме длинной беседы и понятное продолжение при лимите ответа. Сохранён режим только чтения.\"}",
-  "signature": "RwaQq2fcHVqayRH40p3yCHH956mc5YGkUDeundCGBJ61atDMhCNG0SbeS0/wWmJHTBWyLrb1Qyv68e1p5+bUAQ=="
+  "payload": "{\"version\":\"0.2.5\",\"platform\":\"win32\",\"arch\":\"x64\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.5/MIG-Core-Setup-0.2.5-x64.exe\",\"size\":121221589,\"sha256\":\"0b0600b4c75f2b1c6244b5ba7aebb0ac297be8ec28374b3a69888574f5f5f729\",\"appSha256\":\"d488c5fb5d2f79707474e83d3828f0c5ce6b1e67f2cdb62af6fd95eb5abb28b3\",\"notes\":\"Память беседы, редактирование инструкции общения, корректная версия в интерфейсе и проверяемая установка обновлений. После перезапуска включи подключение МИГа в разделе «Приложения».\"}",
+  "signature": "o5cQKNEfSjak0dAXPRYulILwpsy9t+8LGMFdDktKuJLlBz4HkeJRXjvvB6ROhDlF7VF2tjULDC7YphgspePDBg=="
 }
