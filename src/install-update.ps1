@@ -37,6 +37,7 @@ try {
   Start-Process -FilePath $c.exe | Out-Null
   Record 'restarted'
 } catch {
+  [Console]::Error.WriteLine($_.Exception.Message)
   if ($c) {
     [IO.File]::WriteAllText($c.error,$_.Exception.Message,[Text.UTF8Encoding]::new($false))
     Record 'error' $_.Exception.Message
