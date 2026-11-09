@@ -1,4 +1,4 @@
 {
-  "payload": "{\"version\":\"0.5.0\",\"platform\":\"win32\",\"arch\":\"x64\",\"size\":121260927,\"sha256\":\"64a86c4e7f4e428d0666a43f6d453f9058050784f43d879fe02494146673c1c7\",\"appSha256\":\"372b3fa19f84b7f554989a7fb1ebe1f339167878f4833cfeff8a5a1fa3a4bbe3\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.5.0/MIG-Core-Setup-0.5.0-x64.exe\",\"notes\":\"Исправлены уточнения дел, проверка расписания и подключений. Добавлены понятные статусы и настройка доступа через интернет. После Центра управления обновите МИГ на телефоне.\"}",
-  "signature": "VCHwBK5sb7v4azJOCg1Uw5fRzcd0phc1a8LFhHYltf71kHSdg38alZ0OFT8mxbLFFke7KIVXIUMY1WViuJ4ECQ=="
+  "payload": "{\"version\":\"0.6.0\",\"platform\":\"win32\",\"arch\":\"x64\",\"size\":121326832,\"sha256\":\"b1f5f707c34f055a74a155ee4b51bf9403d0c00f47d11270658fd49048f778e5\",\"appSha256\":\"90b75a83075d7882f87ec5f06c69eed08a341bbefb0c4e09f8da4afe3d766e95\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.6.0/MIG-Core-Setup-0.6.0-x64.exe\",\"notes\":\"Исправлены служебное хранилище, память и автоматическое восстановление связи. Добавлен стенд вечерних бесед с проверкой сохранённых изменений. После Центра управления обновите МИГ на телефоне.\"}",
+  "signature": "pcwtRHA9cflrVJJuQS0KxlAtYbfFjMRJDPmTD4ffxxB0UFmzid9kr4UhKS4hpA4M/4cz6H1PJXC0xLyYA5uCCQ=="
 }
