@@ -1,6 +1,6 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "electron": "45.2.3",
-  "source": "fb6197f087f80d9a4aaf378487b89330b10ad5aa",
-  "appAsarSha256": "77ebea0eda961eda09f5cc752f891f8cbb63430b83e4f40bf16c5f7ff5844566"
+  "source": "e77c0ac95c556a468846834a673ba81e631540e0",
+  "appAsarSha256": "c1bed4e96dbe6e02a503d5a62bfc1b871b386b102db2f1beee01137393090e52"
 }
