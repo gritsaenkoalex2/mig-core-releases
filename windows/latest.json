@@ -1,4 +1,4 @@
 {
-  "payload": "{\"version\":\"0.2.6\",\"platform\":\"win32\",\"arch\":\"x64\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.2.6/MIG-Core-Setup-0.2.6-x64.exe\",\"size\":121225948,\"sha256\":\"ebb8721f3aaf8dcb18de68fd1ad16ef80afc1c1df1a98394a9c29d6a49808d1f\",\"appSha256\":\"88e14589ce6e8ce56a1b8720d9d14663244c22b3246d082639e43fd8fd287a76\",\"notes\":\"Сведения обо мне и настройки общения из МИГа, исправления календарных периодов и памяти, вычисление времени и сумм, более длительная загрузка обновлений.\"}",
-  "signature": "+m5HTE7DH/xf+lKIES9l1pFfDii4c5cNTwj47JAA3We/3QDc8ux8rT+N3LLnJgqN6ZlDglPupFl0MgbVCHWqAw=="
+  "payload": "{\"version\":\"0.3.0\",\"platform\":\"win32\",\"arch\":\"x64\",\"size\":121242919,\"sha256\":\"3c31f31ad8786ba731ec68b9bbccc6c46d2ecde9f68d9b9cdd103ea5794dd906\",\"appSha256\":\"77ebea0eda961eda09f5cc752f891f8cbb63430b83e4f40bf16c5f7ff5844566\",\"url\":\"https://github.com/gritsaenkoalex2/mig-core-releases/releases/download/v0.3.0/MIG-Core-Setup-0.3.0-x64.exe\",\"notes\":\"Центр управления: состояния связи, модели LM Studio, встроенный стенд и отчёты. Исправлен запуск подготовки обновления. Для доступа вне дома поддерживается Tailscale с однократной настройкой на компьютере и телефоне.\"}",
+  "signature": "TXRp5FhEg/MdzU3nPAAwOuKqSG9Vfptjz5z2PKqvi51LP3jei/ZqRgSxFmy60WC9mePg9lCXfo91A5oOAApYDw=="
 }
